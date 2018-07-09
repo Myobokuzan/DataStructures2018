@@ -61,6 +61,13 @@ public class ArbolBB {
         arbol.raiz=clonarInv(obtenerRaiz(this.raiz,13));
         return arbol;
     }
+    private void listarMenores(NodoABB n,Comparable elem){
+        if(n!=null){
+            if(n.getElem().compareTo(elem)>0){
+                listarMenores(n.getIzquierdo(),elem);
+            }
+        }
+    }
     //FIN SIMULACRO
     private boolean pertenece(NodoABB n,Comparable elem){
         boolean exito=false;
@@ -224,6 +231,7 @@ public class ArbolBB {
     }
     private void listarRango(NodoABB n,Comparable min,Comparable max,ListaGen ls){
         if(n!=null){
+            System.out.println(n.getElem());
             if(n.getElem().compareTo(min)>=0){
                 listarRango(n.getIzquierdo(),min,max,ls);
                 if(n.getElem().compareTo(max)<=0){

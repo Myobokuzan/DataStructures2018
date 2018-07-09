@@ -33,6 +33,30 @@ public class ArbolGen {
         }
         return exito;
     }*/
+    private void entreNiveles(NodoGen n, int min,int max,int lvlActual,ListaGen ls){
+        if(n!=null){
+            if(lvlActual<max){
+                entreNiveles(n.getHijoIzquierdo(),min,max,lvlActual+1,ls);
+            }
+            if(lvlActual>=min&&lvlActual<=max){
+                ls.insertar(n.getElem(),ls.longitud()+1);
+            }
+            //if(lvlActual+1<=max&&lvlActual+1>=min){
+                if(n.getHijoIzquierdo()!=null){
+                    NodoGen h=n.getHijoIzquierdo().getHermanoDerecho();
+                    while(h!=null){
+                        entreNiveles(h,min,max,lvlActual+1,ls);
+                        h=h.getHermanoDerecho();
+                    }
+                }
+            //}
+        }
+    }
+    public ListaGen entreNiveles(int min,int max){
+        ListaGen ls=new ListaGen();
+        entreNiveles(this.raiz,min,max,0,ls);
+        return ls;
+    }
     private boolean verificarCamino(NodoGen n,ListaGen ls,int i){
         boolean exito=false;
         if(n!=null){
@@ -60,6 +84,7 @@ public class ArbolGen {
     }
     private void listarEntreNiveles(NodoGen n,int niv1,int niv2,int nivActual,ListaGen ls){
         if(n!=null){
+            System.out.println(n.getElem());
             if(n.getHijoIzquierdo()!=null&&nivActual<niv2){
                 listarEntreNiveles(n.getHijoIzquierdo(),niv1,niv2,nivActual+1,ls);
             }
@@ -68,7 +93,7 @@ public class ArbolGen {
             }
             if(n.getHijoIzquierdo()!=null){
                 NodoGen h=n.getHijoIzquierdo().getHermanoDerecho();
-                while(h!=null){
+                while(h!=null&&nivActual<niv2){
                     listarEntreNiveles(h,niv1,niv2,nivActual+1,ls);
                     h=h.getHermanoDerecho();
                 }
@@ -131,7 +156,9 @@ public class ArbolGen {
     }
     public ListaGen listarHastaNivel(int niv){
         ListaGen lista=new ListaGen();
-        listarHastaNivel(this.raiz,niv,0,lista);
+        if(niv>=0){
+            listarHastaNivel(this.raiz,niv,0,lista);
+        }
         return lista;
     }
     
@@ -201,7 +228,7 @@ public class ArbolGen {
         return padre(this.raiz,elem);
     }
     private int altura(NodoGen n){
-        int alt=-1,alt2;
+        int alt,alt2;
         NodoGen hijo;
         if(n.getHijoIzquierdo()==null){
             alt=0;
@@ -283,6 +310,7 @@ public class ArbolGen {
         }
         return clon;
     }
+    @Override
     public ArbolGen clone(){
         ArbolGen nuevoArbol=new ArbolGen();
         nuevoArbol.raiz=clone(this.raiz);
@@ -348,6 +376,7 @@ public class ArbolGen {
         listarPosorden(this.raiz,nueva);
         return nueva;
     }
+    @Override
     public String toString(){
         return toString(this.raiz);
     }

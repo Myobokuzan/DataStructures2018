@@ -24,14 +24,20 @@ public class TestSimulacro {
         arbol.insertar(54,27);
         arbol.insertar(54,4);
         arbol.insertar(27,17);
+        arbol.insertar(15,22);
+        arbol.insertar(12,18);
+        arbol.insertar(27,13);
+        arbol.insertar(27,30);
         
-        lista.insertar(20,1);
+        System.out.println(arbol.toString());
+        System.out.println(arbol.entreNiveles(1, 2));
+        /*lista.insertar(20,1);
         lista.insertar(54,2);
         lista.insertar(27,3);
-        lista.insertar(17,4);
-        System.out.println(arbol.toString());
+        lista.insertar(17,4);*/
+        //System.out.println(arbol.toString());
         //System.out.println(arbol.listarHastaNivel(2).toString());
-        System.out.println(arbol.verificarCamino(lista));
+        //System.out.println(arbol.verificarCamino(lista));
         //System.out.println(arbol.listarEntreNiveles(0,3).toString());
         //arbol.eliminar(11);
         //System.out.println(arbol.toString());

@@ -40,7 +40,7 @@ public class TestABB {
             case 4:
                 System.out.println(arbol.listar().toString());break;
             case 5:
-                System.out.println(arbol.listarRango(45, 73).toString());break;
+                System.out.println(arbol.listarRango(6, 10).toString());break;
             case 6:
                 System.out.println(arbol.minimoElem());break;
             case 7:
