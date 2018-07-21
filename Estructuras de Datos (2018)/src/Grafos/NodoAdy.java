@@ -12,14 +12,17 @@ package Grafos;
 public class NodoAdy {
     private NodoVert vertice;
     private NodoAdy sigAdyacente;
+    private Object etiqueta;
     
     public NodoAdy(){
         this.vertice=null;
         this.sigAdyacente=null;
+        this.etiqueta=null;
     }
-    public NodoAdy(NodoVert vert){
+    public NodoAdy(NodoVert vert,Object etiq){
         vertice=vert;
         sigAdyacente=null;
+        etiqueta=etiq;
     }
     public NodoVert getVertice(){
         return vertice;
@@ -32,6 +35,12 @@ public class NodoAdy {
     }
     public void setSigAdyacente(NodoAdy nuevo){
         this.sigAdyacente=nuevo;
+    }
+    public Object getEtiqueta(){
+        return this.etiqueta;
+    }
+    public void setEtiqueta(Object nueva){
+        this.etiqueta=nueva;
     }
     
 }
